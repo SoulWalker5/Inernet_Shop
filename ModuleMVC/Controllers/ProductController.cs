@@ -15,7 +15,6 @@ namespace ModuleMVC.Controllers
     {
         private readonly IProductApiService _prodService;
         private readonly ICategoryApiService _catService;
-        //private readonly IMapper _mapper;
 
         public ProductController()
         {
@@ -41,7 +40,6 @@ namespace ModuleMVC.Controllers
         public ActionResult ProdByCat(int? categoryID)
         {
             var products = _prodService.GetProducts();
-            //var productsModel = _mapper.Map<IEnumerable<ProductModel>>(products);
 
             if (categoryID != 0)
             {
@@ -49,7 +47,6 @@ namespace ModuleMVC.Controllers
             }
 
             var categories = _catService.GetCategories();
-            //var categoriesModel = _mapper.Map<IEnumerable<CategoryModel>>(categories);
 
             ProductsByCategoty productsList = new ProductsByCategoty
             {

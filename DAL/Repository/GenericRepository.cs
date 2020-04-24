@@ -19,11 +19,10 @@ namespace DAL.Repository
     public class GenericRepository<T> : IGenericRepository<T>, IDisposable where T : class
     {
         private readonly MyContext _ctx;
-        DbSet<T> _dbSet;
+
         public GenericRepository()
         {
             _ctx = new MyContext();
-            _dbSet = _ctx.Set<T>();
         }
 
         public void Create(T item)
@@ -46,10 +45,9 @@ namespace DAL.Repository
 
         public IEnumerable<T> GetAll()
         {
-            return _dbSet.AsNoTracking();
-            //var searachRes = _ctx.Set<T>().AsNoTracking().ToList();
+            var searachRes = _ctx.Set<T>().AsNoTracking().ToList();
 
-            //return searachRes;
+            return searachRes;
         }
 
         public void Remove(int id)
